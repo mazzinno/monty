@@ -40,7 +40,7 @@ void rest_div(stack_t **head, unsigned int counter)
 }
 /**
  * mulp - multiplication of the top two elements
- * @head: stack's item
+ * @head: stack's items
  * @counter: number of lines
  * Return: non return
 */
@@ -81,8 +81,8 @@ void nop(stack_t **head, unsigned int counter)
 	(void) head;
 }
 /**
- * pr_el - print the element of the stack
- * @head: stack's item
+ * pr_el - print the elements of the stack
+ * @head: stack's items
  * @counter: no used
  * Return: no return
 */
