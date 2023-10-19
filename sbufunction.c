@@ -29,7 +29,7 @@ void funSub(stack_t **head, unsigned int counter)
 }
 /**
  * addfun - adds elements
- * @head: stack item
+ * @head: stack items
  * @counter: number of lines
  * Return: non return
 */
@@ -59,7 +59,7 @@ void addfun(stack_t **head, unsigned int counter)
 }
 /**
   *rotfun- rotates_function for stack to the bottom
-  *@head: stack item
+  *@head: stack items
   *@counter: number of lines
   *Return: non return
  */
