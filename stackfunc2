@@ -2,7 +2,7 @@
 /**
  * rest_div - calculat the rest of the division
  * @head: stack's item
- * @counter: number of line 
+ * @counter: number of lines 
  * Return: non return
 */
 void rest_div(stack_t **head, unsigned int counter)
