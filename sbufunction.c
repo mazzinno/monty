@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
-  *funSub- sustration item
+  *funSub- sustration items
   *@head: stack item
   *@counter: number of lines
   *Return: non return
