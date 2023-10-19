@@ -1,0 +1,131 @@
+#include "monty.h"
+/**
+ * rest_div - calculat the rest of the division
+ * @head: stack's item
+ * @counter: number of line 
+ * Return: non return
+*/
+void rest_div(stack_t **head, unsigned int counter)
+{
+	stack_t *h;
+	int len = 0, ax;
+
+	h = *head;
+	while (h)
+	{
+		h = h->next;
+		len++;
+	}
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't mod, stack too short\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	h = *head;
+	if (h->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	ax = h->next->n % h->n;
+	h->next->n = ax;
+	*head = h->next;
+	free(h);
+}
+/**
+ * mulp - multiplication of the top two elements
+ * @head: stack's item
+ * @counter: number of lines
+ * Return: non return
+*/
+void mulp(stack_t **head, unsigned int counter)
+{
+	stack_t *h;
+	int len = 0, ax;
+
+	h = *head;
+	while (h)
+	{
+		h = h->next;
+		len++;
+	}
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	h = *head;
+	ax = h->next->n * h->n;
+	h->next->n = ax;
+	*head = h->next;
+	free(h);
+}
+/**
+  *nop- non nothing
+  *@head: stack's for head
+  *@counter: number of lines
+  *Return: non return
+ */
+void nop(stack_t **head, unsigned int counter)
+{
+	(void) counter;
+	(void) head;
+}
+/**
+ * pr_el - print the element of the stack
+ * @head: stack's item
+ * @counter: no used
+ * Return: no return
+*/
+void pr_el(stack_t **head, unsigned int counter)
+{
+	stack_t *h;
+	(void)counter;
+
+	h = *head;
+	if (h == NULL)
+		return;
+	while (h)
+	{
+		printf("%d\n", h->n);
+		h = h->next;
+	}
+}
+/**
+ * prchar - print the characters in the top
+ * @head: stack's item
+ * @counter: number of lines
+ * Return: non return
+*/
+void prchar(stack_t **head, unsigned int counter)
+{
+	stack_t *h;
+
+	h = *head;
+	if (!h)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	if (h->n > 127 || h->n < 0)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", h->n);
+}
