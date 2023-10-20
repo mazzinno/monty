@@ -1,11 +1,11 @@
 #include "monty.h"
 /**
- * rest_div - calculat the rest of the division
- * @head: stack's item
- * @counter: number of line 
- * Return: non return
+ * h_mod - computes the rest of the division
+ * @head: stack
+ * @counter: line number
+ * Return: no return
 */
-void rest_div(stack_t **head, unsigned int counter)
+void h_mod(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
 	int len = 0, ax;
@@ -39,12 +39,12 @@ void rest_div(stack_t **head, unsigned int counter)
 	free(h);
 }
 /**
- * mulp - multiplication of the top two elements
- * @head: stack's item
- * @counter: number of lines
- * Return: non return
+ * h_mul - multiplies the top two elements
+ * @head: stack
+ * @counter: line number
+ * Return: no return
 */
-void mulp(stack_t **head, unsigned int counter)
+void h_mul(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
 	int len = 0, ax;
@@ -70,23 +70,23 @@ void mulp(stack_t **head, unsigned int counter)
 	free(h);
 }
 /**
-  *nop- non nothing
-  *@head: stack's for head
-  *@counter: number of lines
-  *Return: non return
+  *h_nop- nothing
+  *@head: stack head
+  *@counter: line_number
+  *Return: no return
  */
-void nop(stack_t **head, unsigned int counter)
+void h_nop(stack_t **head, unsigned int counter)
 {
 	(void) counter;
 	(void) head;
 }
 /**
- * pr_el - print the element of the stack
- * @head: stack's item
+ * h_pall - prints element of the stack
+ * @head: stack
  * @counter: no used
  * Return: no return
 */
-void pr_el(stack_t **head, unsigned int counter)
+void h_pall(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
 	(void)counter;
@@ -101,12 +101,12 @@ void pr_el(stack_t **head, unsigned int counter)
 	}
 }
 /**
- * prchar - print the characters in the top
- * @head: stack's item
- * @counter: number of lines
- * Return: non return
+ * h_pchar - prints the char at the top
+ * @head: stack
+ * @counter: line number
+ * Return: no return
 */
-void prchar(stack_t **head, unsigned int counter)
+void h_pchar(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
 
