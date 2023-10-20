@@ -2,9 +2,9 @@
 stack_t *head = NULL;
 
 /**
- * main - entry point
- * @argc: arguments count
- * @argv: list of arguments
+ * main - the entry point to fun
+ * @argc: arguments counts
+ * @argv: list of the arguments
  * Return: always 0
  */
 
@@ -16,12 +16,12 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	open_file(argv[1]);
-	free_nodes();
+	freenodes();
 	return (0);
 }
 
 /**
- * create_node - Creates a node.
+ * create_node - Creates the node.
  * @n: Number to go inside the node.
  * Return: Upon sucess a pointer to the node. Otherwise NULL.
  */
@@ -39,9 +39,9 @@ stack_t *create_node(int n)
 }
 
 /**
- * free_nodes - Frees nodes in the stack.
+ * freenodes - Frees nodes in the stack.
  */
-void free_nodes(void)
+void freenodes(void)
 {
 	stack_t *tmp;
 
@@ -58,11 +58,11 @@ void free_nodes(void)
 
 
 /**
- * add_to_queue - Adds a node to the queue.
+ * add_to_queue - Adds a node to the queue yes
  * @new_node: Pointer to the new node.
  * @ln: line number of the opcode.
  */
-void add_to_queue(stack_t **new_node, __attribute__((unused))unsigned int ln)
+void add_to_the_queue(stack_t **new_node, __attribute__((unused))unsigned int ln)
 {
 	stack_t *tmp;
 
