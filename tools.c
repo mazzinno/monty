@@ -1,17 +1,17 @@
 #include "monty.h"
 
 /**
- * open_file - opens same file
- * @file_name: the file namepath
+ * open_f - opens the file
+ * @file_nam: the file namepath
  * Return: void
  */
 
-void open_file(char *file_name)
+void open_f(char *file_nam)
 {
-	FILE *fd = fopen(file_name, "r");
+	FILE *fd = fopen(file_nam, "r");
 
-	if (file_name == NULL || fd == NULL)
-		err(2, file_name);
+	if (file_nam == NULL || fd == NULL)
+		err(2, file_nam);
 
 	read_file(fd);
 	fclose(fd);
@@ -19,70 +19,69 @@ void open_file(char *file_name)
 
 
 /**
- * read_file - reads the file
- * @fd: pointer to file descriptor
+ * read_f - reads the file
+ * @fd: pointer to file 
  * Return: void
  */
 
-void read_file(FILE *fd)
+void read_f(FILE *fd)
 {
-	int line_number, format = 0;
+	int number_ofline, format = 0;
 	char *buffer = NULL;
-	size_t len = 0;
+	size_t leng = 0;
 
-	for (line_number = 1; getline(&buffer, &len, fd) != -1; line_number++)
+	for (number_ofline = 1; getline(&buffer, &len, fd) != -1; number_ofline++)
 	{
-		format = parse_line(buffer, line_number, format);
+		format = parse_line(buffer, number_ofline, format);
 	}
 	free(buffer);
 }
 
 
 /**
- * parse_line - is Separates each line into tokens to determine
- * which function to call
- * @buffer: line from the file
- * @line_number: line number
+ * par_line - Separates each line 
+ * @buffer: lines from the file
+ * @number_ofline: the line numbers
  * @format:  storage format. If 0 Nodes will be entered as a stack.
  * if 1 nodes will be entered as a queue.
- * Return: Returns 0 if the opcode is stack. 1 if queue.
+ * Return: Returns 0 if stack. 1 if queue.
  */
 
-int parse_line(char *buffer, int line_number, int format)
+int par_line(char *buffer, int number_ofline, int format)
 {
-	char *opcode, *value;
+	char *opco, *value;
 	const char *delim = "\n ";
 
 	if (buffer == NULL)
 		err(4);
 
-	opcode = strtok(buffer, delim);
-	if (opcode == NULL)
+	opco = strtok(buffer, delim);
+	if (opco == NULL)
 		return (format);
 	value = strtok(NULL, delim);
 
-	if (strcmp(opcode, "stack") == 0)
+	if (strcmp(opco, "stack") == 0)
 		return (0);
-	if (strcmp(opcode, "queue") == 0)
+	if (strcmp(opco, "queue") == 0)
 		return (1);
 
-	find_func(opcode, value, line_number, format);
+	find_func(opco, value, number_ofline, format);
 	return (format);
 }
 
 /**
- * find_func - this will find the appropriate function for the opcode
- * @opcode: opcode
- * @value: argument of opcode
+ * find_f - find the function for the opcode
+ * @opco: opcode
+ * @value: arguments of opcode
  * @format:  storage format. If 0 Nodes will be entered as a stack.
- * @ln: line number
+ * @n: line number
  * if 1 nodes will be entered as a queue.
  * Return: void
  */
-void find_func(char *opcode, char *value, int ln, int format)
+void find_f(char *opco, char *value, int n, int format)
 {
-	int i;
-	int flag;
+	int j;
+	int fla;
 
 	instruction_t func_list[] = {
 		{"push", add_to_stack},
@@ -103,58 +102,58 @@ void find_func(char *opcode, char *value, int ln, int format)
 		{NULL, NULL}
 	};
 
-	if (opcode[0] == '#')
+	if (opco[0] == '#')
 		return;
 
-	for (flag = 1, i = 0; func_list[i].opcode != NULL; i++)
+	for (fla = 1, j = 0; func_list[j].opco != NULL; j++)
 	{
-		if (strcmp(opcode, func_list[i].opcode) == 0)
+		if (strcmp(opco, func_list[j].opco) == 0)
 		{
-			call_fun(func_list[i].f, opcode, value, ln, format);
-			flag = 0;
+			call_fun(func_list[j].f, opco, value, n, format);
+			fla = 0;
 		}
 	}
-	if (flag == 1)
-		err(3, ln, opcode);
+	if (fla == 1)
+		err(3, n, opco);
 }
 
 
 /**
- * call_fun - Calls the required function.
- * @func: Pointer to the function that is about to be called.
+ * call_f - Calls the function.
+ * @fun: Pointer to the function that is about to be called.
  * @op: string representing the opcode.
  * @val: string representing a numeric value.
- * @ln: line numeber for the instruction.
+ * @n: line number.
  * @format: Format specifier. If 0 Nodes will be entered as a stack.
  * if 1 nodes will be entered as a queue.
  */
-void call_fun(op_func func, char *op, char *val, int ln, int format)
+void call_f(op_func fun, char *op, char *val, int n, int format)
 {
 	stack_t *node;
-	int flag;
-	int n;
+	int fla;
+	int j;
 
-	flag = 1;
+	fla = 1;
 	if (strcmp(op, "push") == 0)
 	{
 		if (val != NULL && val[0] == '-')
 		{
 			val = val + 1;
-			flag = -1;
+			fla = -1;
 		}
 		if (val == NULL)
-			err(5, ln);
-		for (n = 0; val[n] != '\0'; n++)
+			err(5, n);
+		for (j = 0; val[i] != '\0'; i++)
 		{
-			if (isdigit(val[n]) == 0)
-				err(5, ln);
+			if (isdigit(val[j]) == 0)
+				err(5, n);
 		}
-		node = create_node(atoi(val) * flag);
+		node = create_node(atoi(val) * fla);
 		if (format == 0)
-			func(&node, ln);
+			func(&node, n);
 		if (format == 1)
-			add_to_the_queue(&node, ln);
+			add_to_queue(&node, n);
 	}
 	else
-		func(&head, ln);
+		func(&head, n);
 }
