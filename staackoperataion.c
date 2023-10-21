@@ -1,44 +1,44 @@
 #include "monty.h"
 
 /**
- * mul_nodes - Aaa it adddds the top two elements of the stack.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @line_number: Interger representing the line number of of the opcode.
+ * mul - Adds the top two elements.
+ * @stacks: Pointer to a pointer pointing to top node.
+ * @number_ofline: Interger representing the line number of of the opcode.
  */
-void mul_nodes(stack_t **stack, unsigned int line_number)
+void mul(stack_t **stacks, unsigned int number_ofline)
 {
-	int sumo;
+	int summ;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, line_number, "mul");
+	if (stacks == NULL || *stacks == NULL || (*stacks)->next == NULL)
+		more_err(8, number_ofline, "mul");
 
-	(*stack) = (*stack)->next;
-	sumo = (*stack)->n * (*stack)->prev->n;
-	(*stack)->n = sumo;
-	free((*stack)->prev);
-	(*stack)->prev = NULL;
+	(*stacks) = (*stacks)->next;
+	summ = (*stacks)->n * (*stacks)->prev->n;
+	(*stacks)->n = summ;
+	free((*stacks)->prev);
+	(*stacks)->prev = NULL;
 }
 
 
 /**
- * mod_nodes - Adds the top two elements of d stack
- * @stack: Pointer to a pointer pointing to top node of stack
- * @line_number: Interger representing the line number of of the opcode.
+ * mod - Adds the top two elements.
+ * @stacks: Pointer to a pointer pointing to top node
+ * @number_ofline: Interger representing the line number of of the opcode.
  */
-void mod_nodes(stack_t **stack, unsigned int line_number)
+void mod(stack_t **stacks, unsigned int number_ofline)
 {
-	int sum;
+	int summ;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	if (stacks == NULL || *stacks == NULL || (*stacks)->next == NULL)
 
-		more_err(8, line_number, "mod");
+		more_err(8, number_ofline, "mod");
 
 
-	if ((*stack)->n == 0)
-		more_err(9, line_number);
-	(*stack) = (*stack)->next;
-	sum = (*stack)->n % (*stack)->prev->n;
-	(*stack)->n = sum;
-	free((*stack)->prev);
-	(*stack)->prev = NULL;
+	if ((*stacks)->n == 0)
+		more_err(9, number_ofline);
+	(*stacks) = (*stacks)->next;
+	summ = (*stacks)->n % (*stacks)->prev->n;
+	(*stacks)->n = summ;
+	free((*stacks)->prev);
+	(*stacks)->prev = NULL;
 }

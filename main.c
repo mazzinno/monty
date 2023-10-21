@@ -2,9 +2,9 @@
 stack_t *head = NULL;
 
 /**
- * main - the entry point to fun
- * @argc: arguments counts
- * @argv: list of the arguments
+ * main - entry element
+ * @argc: arguments who count
+ * @argv: list of arguments we have
  * Return: always 0
  */
 
@@ -16,16 +16,16 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	open_file(argv[1]);
-	freenodes();
+	free_nodes();
 	return (0);
 }
 
 /**
- * create_node - Creates the node.
- * @n: Number to go inside the node.
+ * crea_node - Creates a node we need.
+ * @n: Number that go inside the node.
  * Return: Upon sucess a pointer to the node. Otherwise NULL.
  */
-stack_t *create_node(int n)
+stack_t *crea_node(int n)
 {
 	stack_t *node;
 
@@ -39,9 +39,9 @@ stack_t *create_node(int n)
 }
 
 /**
- * freenodes - Frees nodes in the stack.
+ * free_nodes - Frees nodes in the stack.
  */
-void freenodes(void)
+void free_nodes(void)
 {
 	stack_t *tmp;
 
@@ -58,26 +58,26 @@ void freenodes(void)
 
 
 /**
- * add_to_queue - Adds a node to the queue yes
- * @new_node: Pointer to the new node.
- * @ln: line number of the opcode.
+ * add_queue - Adds a node to the queue.
+ * @new_nod: Pointer to the new node.
+ * @n: number of line of the opcode.
  */
-void add_to_the_queue(stack_t **new_node, __attribute__((unused))unsigned int ln)
+void add_queue(stack_t **new_nod, __attribute__((unused))unsigned int n)
 {
 	stack_t *tmp;
 
-	if (new_node == NULL || *new_node == NULL)
+	if (new_nod == NULL || *new_nod == NULL)
 		exit(EXIT_FAILURE);
 	if (head == NULL)
 	{
-		head = *new_node;
+		head = *new_nod;
 		return;
 	}
 	tmp = head;
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 
-	tmp->next = *new_node;
-	(*new_node)->prev = tmp;
+	tmp->next = *new_nod;
+	(*new_nod)->prev = tmp;
 
 }
