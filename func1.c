@@ -54,7 +54,7 @@ void toppop(stack_t **stacks, unsigned int number_ofline)
 	stack_t *tmp;
 
 	if (stacks == NULL || *stacks == NULL)
-		more_err(7, number_ofline);
+		more_erro(7, number_ofline);
 
 	tmp = *stacks;
 	*stacks = tmp->next;
@@ -71,6 +71,6 @@ void toppop(stack_t **stacks, unsigned int number_ofline)
 void pr_top(stack_t **stacks, unsigned int number_ofline)
 {
 	if (stacks == NULL || *stacks == NULL)
-		more_err(6, number_ofline);
+		more_erro(6, number_ofline);
 	printf("%d\n", (*stacks)->n);
 }

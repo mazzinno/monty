@@ -10,11 +10,11 @@ void pr_char(stack_t **stacks, unsigned int number_ofline)
 	int ascii;
 
 	if (stacks == NULL || *stacks == NULL)
-		string_err(11, number_ofline);
+		str_err(11, number_ofline);
 
 	ascii = (*stacks)->n;
 	if (ascii < 0 || ascii > 127)
-		string_err(10, number_ofline);
+		str_err(10, number_ofline);
 	printf("%c\n", ascii);
 }
 
@@ -63,7 +63,7 @@ void rot(stack_t **stacks, __attribute__((unused))unsigned int n)
 		tmp = tmp->next;
 
 	tmp->next = *stacks;
-	(*stack)->prev = tmp;
+	(*stacks)->prev = tmp;
 	*stacks = (*stacks)->next;
 	(*stacks)->prev->next = NULL;
 	(*stacks)->prev = NULL;

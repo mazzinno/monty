@@ -22,7 +22,7 @@ void sw_nodes(stack_t **stacks, unsigned int number_ofline)
 	stack_t *tmp;
 
 	if (stacks == NULL || *stacks == NULL || (*stacks)->next == NULL)
-		more_err(8, number_ofline, "swap");
+		more_erro(8, number_ofline, "swap");
 	tmp = (*stacks)->next;
 	(*stacks)->next = tmp->next;
 	if (tmp->next != NULL)
@@ -34,16 +34,16 @@ void sw_nodes(stack_t **stacks, unsigned int number_ofline)
 }
 
 /**
- * add - Adds the top two elements.
+ * add_n - Adds the top two elements.
  * @stacks: Pointer to a pointer pointing to top node .
  * @number_ofline: the line number of the opcode.
  */
-void add(stack_t **stacks, unsigned int number_ofline)
+void add_n(stack_t **stacks, unsigned int number_ofline)
 {
 	int summ;
 
 	if (stacks == NULL || *stacks == NULL || (*stacks)->next == NULL)
-		more_err(8, number_ofline, "add");
+		more_erro(8, number_ofline, "add");
 
 	(*stacks) = (*stacks)->next;
 	summ = (*stacks)->n + (*stacks)->prev->n;
@@ -64,7 +64,7 @@ void sub(stack_t **stacks, unsigned int number_ofline)
 
 	if (stacks == NULL || *stacks == NULL || (*stacks)->next == NULL)
 
-		more_err(8, number_ofline, "sub");
+		more_erro(8, number_ofline, "sub");
 
 
 	(*stacks) = (*stacks)->next;
@@ -85,10 +85,10 @@ void div(stack_t **stacks, unsigned int number_ofline)
 	int summ;
 
 	if (stacks == NULL || *stacks == NULL || (*stacks)->next == NULL)
-		more_err(8, number_ofline, "div");
+		more_erro(8, number_ofline, "div");
 
 	if ((*stacks)->n == 0)
-		more_err(9, number_ofline);
+		more_erro(9, number_ofline);
 	(*stacks) = (*stacks)->next;
 	summ = (*stacks)->n / (*stacks)->prev->n;
 	(*stacks)->n = summ;
